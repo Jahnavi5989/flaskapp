@@ -5,10 +5,10 @@ import numpy as np
 import librosa
 
 # model = pickle.load(open('gmm_model.pkl', 'rb'))
-application = Flask(__name__)
+app = Flask(__name__)
 
 
-@application.route('/')
+@app.route('/')
 def home():
     return "hello world"
 
@@ -26,7 +26,7 @@ with open('gmm_model.pkl', 'rb') as file1:
 
 
 # Define predict_speaker function
-@application.route('/speech', methods=['POST'])
+@app.route('/speech', methods=['POST'])
 def predict_speaker():
     # Load audio file
     f = request.files.get('file')
@@ -80,4 +80,4 @@ def predict_speaker():
 
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    app.run(debug=True)
